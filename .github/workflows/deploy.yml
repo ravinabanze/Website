@@ -2,8 +2,8 @@ name: Build & Publish (Porkbun Static Hosting)
 
 on:
   push:
-    branches: [ main ]   # build on pushes to main
-  workflow_dispatch:      # allow manual runs
+    branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -25,15 +25,35 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+
+      # Detect package manager
+      - name: Detect package manager
+        id: pm
+        run: |
+          if [ -f pnpm-lock.yaml ]; then echo "manager=pnpm" >> $GITHUB_OUTPUT;
+          elif [ -f yarn.lock ]; then echo "manager=yarn" >> $GITHUB_OUTPUT;
+          else echo "manager=npm" >> $GITHUB_OUTPUT; fi
+
+      - name: Enable corepack (for yarn/pnpm)
+        if: steps.pm.outputs.manager != 'npm'
+        run: corepack enable
 
       - name: Install deps
-        run: npm ci
+        run: |
+          case "${{ steps.pm.outputs.manager }}" in
+            pnpm) pnpm install --frozen-lockfile ;;
+            yarn) yarn install --frozen-lockfile ;;
+            npm)  (npm ci || npm i) ;;
+          esac
 
       - name: Build
-        run: npm run build
+        run: |
+          case "${{ steps.pm.outputs.manager }}" in
+            pnpm) pnpm run build ;;
+            yarn) yarn build ;;
+            npm)  npm run build ;;
+          esac
 
-      # Detect Vite (dist) vs CRA (build) output folder
       - name: Prepare output folder
         run: |
           if [ -d "dist" ]; then OUT="dist";
@@ -41,7 +61,6 @@ jobs:
           else echo "No build output found (dist/ or build/)"; exit 1; fi
           mv "$OUT" out
 
-      # Publish compiled files to the deploy branch
       - name: Publish to deploy branch
         run: |
           cd out
@@ -53,4 +72,3 @@ jobs:
           git branch -M deploy
           git remote add origin "https://github.com/${{ github.repository }}.git"
           git push -f origin deploy
-
