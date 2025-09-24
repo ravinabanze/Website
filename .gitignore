@@ -1,0 +1,30 @@
+# dependencies
+/node_modules
+
+# production build output
+# (Do NOT ignore dist/, since you want to deploy it)
+/build
+
+# misc
+.DS_Store
+.env
+.env.*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local IDE config
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional: Mac system files
+._*
+
+
