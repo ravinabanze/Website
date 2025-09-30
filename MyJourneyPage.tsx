@@ -476,7 +476,7 @@ const MyJourneyPage: React.FC<MyJourneyPageProps> = ({ navigateTo }) => {
                 </a>
               </div>
             }
-            dateInfo="Aug 2025 - Present"
+            dateInfo="May 2025 - Present"
             bullets={[
               "Leading North American growth for an AI-powered fundraising intelligence platform, reaching 50+ nonprofits in first quarter",
               "Driving product demos and closing strategic partnerships with nonprofit executives, resulting in 20% pipeline growth",
@@ -520,11 +520,10 @@ const MyJourneyPage: React.FC<MyJourneyPageProps> = ({ navigateTo }) => {
                 </a>
               </div>
             }
-            dateInfo="June 2025 - July 2025"
+            dateInfo="June 2025 - Present"
             bullets={[
               "Built 10+ partnerships with CSR teams and foundations to pilot Ketto's AI fundraising automation",
-              "Generated consistent sales pipeline through product demos, proposals, and relationship management",
-              "Represented Ketto at NIO Summit 2025, engaging with 650+ nonprofit leaders and gathering market insights"
+              "Generated consistent sales pipeline through product demos, proposals, and relationship management"
             ]}
           >
             <div className="mb-4">
@@ -564,7 +563,7 @@ const MyJourneyPage: React.FC<MyJourneyPageProps> = ({ navigateTo }) => {
                 </a>
               </div>
             }
-            dateInfo="Jan 2025 - May 2025"
+            dateInfo="June 2025 - Present"
             bullets={[
               "Designed program evaluation dashboards improving visibility into student outcomes by 30%",
               "Conducted data audits that streamlined operations and reduced reporting time by 15%",
