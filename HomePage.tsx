@@ -85,9 +85,13 @@ const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
            <CTAButton onClick={() => navigateTo('journey')} variant="secondary" icon={<SearchIcon className="w-5 h-5" />}>
               Explore My Work
            </CTAButton>
-           <CTAButton onClick={() => navigateTo('contact')} variant="primary" icon={<DownloadIcon className="w-5 h-5" />}>
-              Download Resume
-           </CTAButton>
+           <CTAButton
+  onClick={() => window.open('https://drive.google.com/file/d/12sjp3yj2iTEgCccFj082Mqf23LcNoq1g/view?usp=sharing', '_blank')}
+  variant="primary"
+  icon={<DownloadIcon className="w-5 h-5" />}
+>
+  Download Resume
+</CTAButton>
            <CTAButton onClick={() => navigateTo('contact')} variant="secondary" icon={<HandshakeIcon className="w-5 h-5" />}>
               Let's Collaborate
            </CTAButton>
