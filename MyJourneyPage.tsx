@@ -402,13 +402,15 @@ const MyJourneyPage: React.FC<MyJourneyPageProps> = ({ navigateTo }) => {
             ))}
           </div>
            <div className="mt-8">
-                <button 
-                    onClick={() => navigateTo('contact')} 
+                <a 
+                    href="https://drive.google.com/file/d/12sjp3yj2iTEgCccFj082Mqf23LcNoq1g/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-3 font-semibold text-center rounded-2xl transition-all duration-300 ease-in-out shadow-md focus:outline-none focus:ring-4 bg-purple-600 text-white hover:bg-purple-700 hover:shadow-lg hover:-translate-y-0.5 focus:ring-purple-300"
                 >
                     <DownloadIcon className="w-5 h-5" />
                     Download Resume
-                </button>
+                </a>
             </div>
         </div>
       </section>
